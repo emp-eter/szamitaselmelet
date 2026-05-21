@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>Számításelmélet — a sztori</title>
+<style>
+  @page { size: A4; margin: 1.8cm; }
+  html { font-size: 11pt; }
+  body {
+    font-family: "Georgia", "Cambria", serif;
+    line-height: 1.6;
+    max-width: 16cm;
+    margin: 0 auto;
+    padding: 1.5cm;
+    color: #222;
+    background: #fafafa;
+  }
+  h1, h2, h3 {
+    font-family: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+    line-height: 1.3;
+  }
+  h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 0.2em;
+  }
+  h1 + p {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+    margin-top: 0;
+  }
+  h2 {
+    font-size: 1.3rem;
+    color: #2c3e50;
+    border-bottom: 2px solid #2c3e50;
+    padding-bottom: 0.2em;
+    margin-top: 2em;
+    page-break-after: avoid;
+  }
+  h3 {
+    font-size: 1.05rem;
+    color: #34495e;
+    margin-top: 1.5em;
+    page-break-after: avoid;
+  }
+  p { margin: 0.7em 0; }
+  .key {
+    background: #fff5b8;
+    padding: 0.1em 0.3em;
+    border-radius: 2px;
+    font-weight: 600;
+  }
+  .aside {
+    background: #e8f4fd;
+    border-left: 4px solid #3498db;
+    padding: 0.6em 1em;
+    margin: 1em 0;
+    font-size: 0.95em;
+  }
+  .aside::before {
+    content: "💡 ";
+  }
+  .big {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    padding: 0.8em 1.2em;
+    margin: 1.2em 0;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1.05em;
+  }
+  .question {
+    background: #f0f0f0;
+    border-left: 4px solid #888;
+    padding: 0.5em 1em;
+    margin: 1em 0;
+    font-style: italic;
+  }
+  .question::before {
+    content: "❓ ";
+    font-style: normal;
+  }
+  ul li { margin: 0.3em 0; }
+  strong { color: #c0392b; }
+  .end {
+    text-align: center;
+    margin-top: 3em;
+    padding: 1em;
+    background: #d4edda;
+    border-radius: 4px;
+    font-size: 1.05em;
+  }
+</style>
+</head>
+<body>
+
+<h1>Számításelmélet — a sztori</h1>
+<p>egy narratíva, ami nem magolni való</p>
+
+<div class="big">
+A teljes tárgy egyetlen kérdésre próbál válaszolni:<br>
+<strong>„Mit lehet egyáltalán kiszámolni egy géppel, és mibe kerül?"</strong>
+</div>
+
+<h2>1. Honnan jött az egész?</h2>
+
+<p>Az 1930-as években <strong>még nem volt számítógép</strong>. A matematikusok mégis azt kérdezték: „mit jelent az, hogy egy probléma <em>algoritmussal megoldható</em>?" — szükségük volt egy <span class="key">formális modellre</span>, ami megragadja az „algoritmus" fogalmát.</p>
+
+<p>Három srác három különböző irányból támadta meg ugyanezt a kérdést:</p>
+
+<ul>
+  <li><strong>Turing</strong> (Anglia): képzeljünk el egy szalagra író embert, aki primitív szabályok szerint dolgozik. → <em>Turing-gép</em></li>
+  <li><strong>Church</strong> (USA): függvényekkel dolgozzunk, amik más függvényeknek paraméterei. → <em>λ-kalkulus</em> (a Haskell, Lisp őse)</li>
+  <li><strong>Gödel, Kleene</strong>: definiáljuk a függvényeket rekurzív módon. → <em>rekurzív függvények</em></li>
+</ul>
+
+<p>És most jön a poén: <strong>kiderült, mind a három ugyanazt tudja</strong>. Ami az egyikkel kiszámítható, a másikkal is. Ezt nevezik <span class="key">Church–Turing tézisnek</span>: bárhogy is próbálod definiálni, hogy „mit jelent kiszámítható", ugyanaz jön ki.</p>
+
+<p>A Turing-gép azért lett a sztenderd, mert <strong>egyszerű és vizualizálható</strong>. Innentől róla beszélünk.</p>
+
+<div class="aside">Ez a tárgy 8. kérdése. Most már tudod a választ saját szavakkal: „három különböző matek-modell, mind ekvivalens, ezt a Church-Turing tézis mondja ki."</div>
+
+<h2>2. Mi az a Turing-gép?</h2>
+
+<p>Képzeld el ezt:</p>
+
+<ul>
+  <li>Van egy <strong>végtelen kockás szalag</strong>, mint egy soha véget nem érő füzet.</li>
+  <li>Egy <strong>fej</strong> áll egy kockán. Olvas és ír.</li>
+  <li>A gépnek van egy „<strong>agya</strong>" — mindig pontosan egy állapotban van. Pl. „épp a 0-kat számolom", „kész vagyok és elfogadtam", vagy „kész vagyok és elutasítottam".</li>
+  <li>Van egy <strong>szabálykönyv</strong>: „<em>ha most ebben az állapotban vagyok és X-et látok a fej alatt, akkor írok Y-t a helyére, lépek balra vagy jobbra, és átváltok Z állapotba.</em>"</li>
+</ul>
+
+<p>Ennyi. Ez a gép kapja a bemenetet a szalagra, dolgozik egy darabig, és vagy elfogad (<em>„igen, ez jó input"</em>) vagy elutasít (<em>„nem"</em>), vagy soha nem áll meg.</p>
+
+<p>Hivatalosan: <strong>M = (Q, Σ, Γ, δ, q₀, q_accept, q_reject)</strong>. Ne ijedj meg ettől. Ez csak ennyit jelent:</p>
+
+<ul>
+  <li><strong>Q</strong> — a lehetséges állapotok listája (a „hangulatai")</li>
+  <li><strong>Σ</strong> — milyen jelekből állhat a bemenet</li>
+  <li><strong>Γ</strong> — milyen jeleket írhat a szalagra (Σ + üres jel + munka-jelek)</li>
+  <li><strong>δ</strong> — a szabálykönyv</li>
+  <li><strong>q₀</strong> — itt kezd</li>
+  <li><strong>q_accept / q_reject</strong> — itt fejezi be elfogadva / elutasítva</li>
+</ul>
+
+<p>Az állapot + a szalag tartalma + a fej pozíciója együtt = <span class="key">konfiguráció</span>. Ez a gép „pillanatnyi snapshotja". Egy lépésben egyik konfigból átmegy a másikba a δ szerint.</p>
+
+<div class="aside">Ez fedi a 9–14. kérdést. Ha valaki azt kérdezi „mi a konfiguráció?", te azt mondod: „a gép pillanatnyi állapota — milyen az állapot, mi van a szalagon, hol áll a fej."</div>
+
+<h2>3. Variációk a Turing-gépre</h2>
+
+<p>Ugyanaz a gép, csak ráncoltabb. Mindegyik <strong>ugyanazt tudja kiszámítani</strong>, csak hatékonysági különbségek vannak.</p>
+
+<h3>Többszalagos</h3>
+<p>Több párhuzamos szalag, mindegyiken külön fej. Gyorsabb, mert nem kell egy szalagon összepréselni mindent. <strong>Ugyanazt tudja</strong>, mint az egyszalagos: egy t lépéses k-szalagos gépet le tudunk szimulálni egyszalagosan O(t²) lépésben. Bizonyítás: a k szalagot egymás mellé tesszük egy szalagra <span class="key">sávozással</span> + fej-jelölőkkel.</p>
+
+<h3>Lyukszalagos (input/munka/output külön)</h3>
+<p>Egy szalag csak olvasható (input), egy csak írható (output), és van több munkaszalag. <strong>Miért kell ez?</strong> Hogy meg tudjuk mérni szigorúan azt, hogy a „<em>munkához</em>" mennyi memória kell — ne számítson bele a nagy bemenet. Csak így lehet értelmesen beszélni például a <strong>L = SPACE(log n)</strong> osztályról, ahol kevesebb a megengedett memória, mint maga a bemenet hossza.</p>
+
+<h3>Nemdeterminisztikus</h3>
+<p>A gép minden lépésnél <strong>több lehetséges állapotot is választhat</strong> — mintha mindig „találgatna". <strong>Elfogad</strong>, ha <strong>létezik</strong> egy futási ág, ami elfogadáshoz vezet. <strong>Elutasít</strong>, ha <em>minden</em> ág elutasítóba fut.</p>
+
+<p>Ez nem fizikai gép — egy elméleti konstrukció. Az értéke: <strong>sok érdekes probléma így jól látszik megoldhatónak</strong>. Pl. „van Hamilton-kör a gráfban?" — egy nemdet. gép találgat egy kört, aztán determinisztikusan ellenőrzi. Polinom idő.</p>
+
+<div class="aside">Ez fedi a 15–18. és 25–27. kérdést. „Mi a nemdet. eltérése a det.-től? Egy lépésben több lehet, és elég ha az egyik elfogad."</div>
+
+<h2>4. Mibe kerül a számolás?</h2>
+
+<p>Most jön a fő rész. Két erőforrást nézünk:</p>
+
+<ul>
+  <li><strong>Idő</strong> — hány lépést tesz a gép.</li>
+  <li><strong>Tár</strong> — hány különböző cellát látogat a fej.</li>
+</ul>
+
+<p>Minkettőt az <strong>input méretének (n)</strong> függvényében nézzük. Pl. „ez az algoritmus n² lépésben fut".</p>
+
+<p>Az <strong>ordó (O)</strong> jelölés azt mondja: „nagyságrendileg legfeljebb ennyi" — konstans szorzókat elhagyunk. f(n) = O(g(n)) annyit tesz, mint hogy van olyan c és n₀, hogy n ≥ n₀-tól f(n) ≤ c·g(n).</p>
+
+<h3>Időosztályok</h3>
+<ul>
+  <li><strong>TIME(f(n))</strong> — azok a problémák, amik f(n) lépésben eldönthetők.</li>
+  <li><strong>P</strong> — azok, amik <strong>valamilyen polinom időben</strong> eldönthetők. Pl. n², n³, n⁵, … — mindegy melyikben, csak legyen polinom. Ez a „könnyű" osztály.</li>
+  <li><strong>EXPTIME</strong> — exponenciális idő. 2^(n^k). Lassú, de még véges.</li>
+</ul>
+
+<h3>Tárosztályok</h3>
+<ul>
+  <li><strong>SPACE(f(n))</strong> — f(n) cellán elfér.</li>
+  <li><strong>L</strong> — <strong>log n</strong> méretű tár. (Annyi, mint egy pointer.)</li>
+  <li><strong>PSPACE</strong> — polinom tár. Sok minden befér ide.</li>
+  <li><strong>EXPSPACE</strong> — exponenciális tár.</li>
+</ul>
+
+<h3>Nemdeterminisztikus változatok (N előtag)</h3>
+<ul>
+  <li><strong>NP</strong> — nemdet. polinom idő. „<em>Ha valaki ad egy tippet, gyorsan ellenőrzöm.</em>"</li>
+  <li><strong>NL</strong> — nemdet. log tár.</li>
+  <li><strong>NEXPTIME</strong>, <strong>NPSPACE</strong> — analóg.</li>
+</ul>
+
+<div class="aside">Tehát ha hallasz egy „P-t" — polinom időben megoldható. „NP" — polinom időben ellenőrizhető tipp. Ennyi. Ez a 19–24. és 28–30. kérdés.</div>
+
+<h2>5. Hogyan rendeződnek az osztályok?</h2>
+
+<p>Ez a legfontosabb kép, amit fejből kell tudni:</p>
+
+<div class="big">
+L ⊆ NL ⊆ P ⊆ NP ⊆ PSPACE ⊆ EXPTIME ⊆ NEXPTIME ⊆ EXPSPACE
+</div>
+
+<p>Mindegyik <strong>⊆</strong> azt jelenti: az előző osztály probémái mind benne vannak a következőben is. „Aki tudja a kisebbet, tudja a nagyobbat."</p>
+
+<p><strong>Triviális dolgok</strong> (érthető miért):</p>
+<ul>
+  <li>Det. ⊆ Nemdet. (mert a determinisztikus a nemdeterminisztikus speciális esete — egyetlen választással)</li>
+  <li>TIME ⊆ SPACE (egy lépésben max. egy cellát ír)</li>
+  <li>SPACE(f) ⊆ TIME(2^O(f)) (legfeljebb 2^f féle konfig van; több nem futhat ciklus nélkül)</li>
+</ul>
+
+<p><strong>Két nem-triviális tétel</strong>, amik az egész tárgy gerincét adják:</p>
+
+<h3>Savitch tétele</h3>
+<p><strong>NSPACE(f) ⊆ SPACE(f²)</strong>. Vagyis: ha egy probléma nemdeterminisztikusan f tárban megy, akkor determinisztikusan is megy f² tárban — csak polinomi blow-up. <strong>Következmény: NPSPACE = PSPACE</strong>. Ezért nem létezik külön „NPSPACE" név.</p>
+
+<h3>Lineáris felgyorsítás</h3>
+<p>Konstans szorzókkal tetszőleges TIME osztály felgyorsítható. Trükk: szélesebb szalag-ábécé, több jelet egy cellába kódolunk. Ezért nem számít a P-nél, hogy n² vagy 100·n² — ugyanaz az osztály.</p>
+
+<h3>Hierarchia-tételek</h3>
+<p>Ezekből bizonyított, hogy <strong>L ⊊ PSPACE</strong> (szigorúan) és <strong>P ⊊ EXPTIME</strong>. Tehát exponenciálisan több idővel <em>tényleg</em> többet tudunk megoldani.</p>
+
+<h3>A nyitott kérdések</h3>
+<p>A <span class="key">P = NP?</span> kérdés a tárgy és az egész informatika központi problémája. <strong>Senki nem tudja</strong> a választ. Hasonlóan: L = NL? NP = PSPACE? Mindegyik nyitott.</p>
+
+<div class="aside">Ez fedi a 36–41. kérdést. Amikor azt kérdezik „hasonlítsd össze ezeket az osztályokat", te a hierarchiát rajzolod fel és elmondod, melyik bizonyított, melyik nyitott.</div>
+
+<h2>6. A Tanú-tétel — mi is az NP igazából?</h2>
+
+<p>Az NP definíciója fent egy NTM-en keresztül szólt. Van egy <em>sokkal érthetőbb</em> alternatív definíció. Ez a <span class="key">Tanú-tétel</span>:</p>
+
+<div class="big">
+<strong>L ∈ NP</strong> ⟺ minden x ∈ L-hez létezik egy „<em>tanú</em>" (y), ami:<br>
+(1) polinom méretű x-hez képest<br>
+(2) polinom időben ellenőrizhető (igazolja, hogy x ∈ L)
+</div>
+
+<p>Magyarul: <strong>NP = polinomban tanúsítható problémák</strong>. Ha valaki odaadja a választ, gyorsan ellenőrzöd. De magadtól megtalálni? — talán nem gyors.</p>
+
+<h3>Példák, miért NP-ben van</h3>
+
+<ul>
+  <li><strong>Hamilton-kör</strong>: tanú = maga a kör (csúcsok sorrendje). Ellenőrzés = minden szomszéd legyen él. Polinom.</li>
+  <li><strong>Gráfszínezés</strong>: tanú = a színezés. Ellenőrzés = minden élre különböző színű a két csúcs. Polinom.</li>
+  <li><strong>Faktorizáció</strong>: tanú = egy osztó. Ellenőrzés = osztja-e a számot. Polinom.</li>
+</ul>
+
+<div class="aside">31–34. kérdés. Mindig ugyanaz a recept: „mi a tanú?", „mennyire nagy?", „hogy ellenőrizzük gyorsan?".</div>
+
+<h2>7. Vannak megoldhatatlan problémák?</h2>
+
+<p>Igen! Vannak dolgok, amik <strong>elvileg sem oldhatók meg algoritmussal</strong>, akármennyi időnk van. Ezek az <span class="key">eldönthetetlen</span> problémák.</p>
+
+<p>A klasszikus: <strong>Megállási probléma (Halting Problem)</strong>. Adott egy M Turing-gép és egy w bemenet. Eldöntöd-e, hogy M megáll-e w-n? <strong>Turing 1936-ban bebizonyította: lehetetlen.</strong></p>
+
+<p>A bizonyítás <em>átlós módszer</em>: tegyük fel, van egy „Halt" gép, ami eldönti. Konstruálunk egy „Trükk" gépet, ami pont az ellenkezőjét csinálja annak, amit Halt mond rá. Mi van, ha Halt-ot a saját kódjára futtatjuk Trükk-ön belül? Ellentmondás.</p>
+
+<p>További eldönthetetlen problémák:</p>
+<ul>
+  <li><strong>Üresség</strong>: üres-e egy adott Turing-gép által felismert nyelv?</li>
+  <li><strong>Ekvivalencia</strong>: két gép ugyanazt fogadja-e el?</li>
+  <li><strong>Rice-tétel</strong>: minden nemtriviális szemantikus tulajdonság eldönthetetlen. (Vagyis bármi, ami arról szól, „mit csinál a gép", nem a „hogyan néz ki a kódja".)</li>
+</ul>
+
+<div class="aside">35. kérdés.</div>
+
+<h2>8. Visszavezetés és NP-teljesség</h2>
+
+<p>Most jön egy <em>nagyon erős</em> ötlet. Ha tudunk egy nehéz problémát „<strong>átfogalmazni</strong>" egy másik problémára gyorsan, akkor a két probléma <strong>egyformán nehéz</strong>.</p>
+
+<p>Formálisan: <strong>L₁ ≤_p L₂</strong> azt jelenti, hogy van egy polinom időben számítható f függvény, hogy w ∈ L₁ ⟺ f(w) ∈ L₂. Ha tudom L₂-t oldani, tudom L₁-et is (f-fel transzformálok).</p>
+
+<h3>Nehéz és teljes</h3>
+<ul>
+  <li>L <strong>C-nehéz</strong>: minden C-beli probléma visszavezethető rá. (Legalább olyan nehéz, mint bármi C-ben.)</li>
+  <li>L <strong>C-teljes</strong>: C-nehéz ÉS L ∈ C. (A legnehezebb C-beli.)</li>
+</ul>
+
+<p>Ha találunk egy NP-teljes problémát és bebizonyítjuk, hogy polinom időben megoldható — akkor <strong>P = NP</strong>. (Ezért keresnek mindenki olyan algoritmust.)</p>
+
+<h3>A nagy fa</h3>
+<p>Hogyan találunk új NP-teljes problémákat? Vegyünk egy ismertet (L₁), és vezessük vissza rá az újat (L₂): L₁ ≤_p L₂. Plusz mutassuk meg, hogy L₂ ∈ NP. Kész.</p>
+
+<p>Az <strong>első</strong> NP-teljes probléma a <span class="key">SAT</span> (Boole-formula kielégíthetőség) volt — <strong>Cook–Levin tétel</strong>, 1971. A bizonyítás brutális: bármilyen NP nyelvet vesznek, az NTM-jét lekódolják egy óriási Boole-formulává, ami pontosan akkor kielégíthető, ha az NTM elfogad. Méret: polinom.</p>
+
+<p>SAT-ból aztán mindenki vezet vissza:</p>
+<ul>
+  <li>SAT → 3-SAT (formulát átírjuk 3 literálos klauzákká)</li>
+  <li>3-SAT → gráfszínezés, Hamilton-kör, Vertex Cover, Subset Sum, …</li>
+  <li>Karp 1972: 21 alapprobléma.</li>
+</ul>
+
+<div class="aside">42–47. kérdés.</div>
+
+<h2>9. Teljes problémák más osztályokra</h2>
+
+<p>Minden osztálynak vannak „<em>tipikus, legnehezebb</em>" problémái.</p>
+
+<h3>Nyelvek a SAT-családból</h3>
+<ul>
+  <li><strong>2-SAT</strong> — P-ben (két literálos klauzák, implikációs gráffal megoldható).</li>
+  <li><strong>3-SAT</strong> — NP-teljes.</li>
+  <li><strong>QBF</strong> (kvantorokkal) — PSPACE-teljes. A „minden", „létezik" kvantorok váltogatva exponenciális választási fát adnak, ami már a PSPACE-en van.</li>
+</ul>
+
+<h3>Gráfproblémák</h3>
+<ul>
+  <li><strong>s-t elérhetőség</strong> — NL-teljes (és így P-ben).</li>
+  <li><strong>3-színezés</strong> — NP-teljes.</li>
+  <li><strong>Hamilton-kör</strong> — NP-teljes.</li>
+</ul>
+
+<h3>Játékok</h3>
+<ul>
+  <li><strong>Sokoban</strong>, <strong>Reversi</strong> (n×n) — PSPACE-teljes.</li>
+  <li><strong>Mahjong solitaire</strong> — NP-teljes (egyjátékos puzzle, polinom tanúval ellenőrizhető).</li>
+  <li><strong>Sakk</strong>, <strong>Go</strong> (n×n, általánosított) — EXPTIME-teljes.</li>
+</ul>
+
+<p>Miért nehezebb a sakk, mint a Sokoban? Mert <strong>kétjátékos, korlátlan hosszú</strong> játszma, vagyis exponenciális mélységű döntési fa.</p>
+
+<div class="aside">48–51. kérdés. A táblázatból megjegyzed: ki melyik osztályban van, és miért.</div>
+
+<h2>Összefoglaló — egy mondatban a 9 tétel</h2>
+
+<ol>
+  <li><strong>Bonyolultság mérése</strong>: idő és tár, n függvényében; ordó jelöléssel nagyságrendileg.</li>
+  <li><strong>Turing-gép</strong>: a primitív „matek-számítógép" — szalag + fej + állapot + szabálykönyv.</li>
+  <li><strong>Többszalagos TG</strong>: gyorsabb, de ugyanazt tudja (sávozással szimulálható).</li>
+  <li><strong>Idő- és tárosztályok</strong>: TIME, SPACE, és kombinációik (P, EXPTIME, L, PSPACE).</li>
+  <li><strong>Nemdet. gép</strong>: „találgat" — ha létezik elfogadó ág, elfogad. NP, NL.</li>
+  <li><strong>Tanú-tétel</strong>: NP = polinomban tanúsítható problémák (Hamilton, színezés, faktorizáció).</li>
+  <li><strong>Eldönthetetlen</strong> problémák és <strong>osztály-hierarchia</strong>: L ⊆ NL ⊆ P ⊆ NP ⊆ PSPACE ⊆ EXPTIME ⊆ NEXPTIME ⊆ EXPSPACE. Savitch: NPSPACE = PSPACE.</li>
+  <li><strong>Visszavezetés és teljesség</strong>: ≤_p, nehéz, teljes, NP-teljes nyelvek családja.</li>
+  <li><strong>SAT és variánsai</strong> + más osztályok teljes nyelvei (gráf, játékok).</li>
+</ol>
+
+<div class="end">
+<strong>Most lélegezz mélyen.</strong><br>
+Ez a teljes tárgy. Nincs több. Amit fent olvastál, az nem több anyag — ez ugyanaz, csak <em>sztori formában</em>.<br><br>
+A részletes kidolgozást innentől <strong>csak referenciaként</strong> használd: ha valamelyik kérdésnél megakad a fejed, oda nézel. De a vizsgán nem definíciókat mondasz fel — <strong>a sztori körüli részt mondod el</strong> a saját szavaiddal.
+</div>
+
+</body>
+</html>
