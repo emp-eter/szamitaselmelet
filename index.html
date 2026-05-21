@@ -240,10 +240,69 @@
     h2 { page-break-before: always; }
     h2:first-of-type { page-break-before: auto; }
     a { color: inherit; text-decoration: none; }
+    .topnav { display: none !important; }
   }
+  .topnav {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    border-bottom: 2px solid #2c3e50;
+    padding: 0.6em 0;
+    margin-bottom: 1.2em;
+    z-index: 100;
+  }
+  .nav-versions {
+    display: flex;
+    gap: 0.4em;
+    margin-bottom: 0.4em;
+    flex-wrap: wrap;
+  }
+  .nav-versions a {
+    padding: 0.4em 0.9em;
+    background: #ecf0f1;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 0.9em;
+    font-family: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  }
+  .nav-versions a.active { background: #2c3e50; color: white; }
+  .nav-versions a:hover { background: #34495e; color: white; }
+  .nav-tetelek { display: flex; gap: 0.25em; flex-wrap: wrap; }
+  .nav-tetelek a {
+    padding: 0.3em 0.7em;
+    background: #f7f9fb;
+    border: 1px solid #d4d4d4;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #34495e;
+    font-size: 0.85em;
+    font-family: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  }
+  .nav-tetelek a:hover { background: #2c3e50; color: white; border-color: #2c3e50; }
 </style>
 </head>
 <body>
+
+<nav class="topnav">
+  <div class="nav-versions">
+    <a href="sztori.html">📖 Sztori</a>
+    <a href="egyszeru.html">📝 Egyszerű</a>
+    <a href="index.html" class="active">📚 Részletes</a>
+  </div>
+  <div class="nav-tetelek">
+    <a href="#tetel-1" title="Algoritmusok bonyolultsága">T1</a>
+    <a href="#tetel-2" title="Turing-gép">T2</a>
+    <a href="#tetel-3" title="Többszalagos TG">T3</a>
+    <a href="#tetel-4" title="Idő/tár osztályok">T4</a>
+    <a href="#tetel-5" title="Nemdet. TG">T5</a>
+    <a href="#tetel-6" title="NP és Tanú-tétel">T6</a>
+    <a href="#tetel-7" title="Eldönthetetlen, osztályok">T7</a>
+    <a href="#tetel-8" title="Visszavezetés">T8</a>
+    <a href="#tetel-9" title="SAT, teljes nyelvek">T9</a>
+  </div>
+</nav>
 
 <h1>Számításelmélet</h1>
 <p>vizsgakérdések kidolgozása · 51 kérdés · 9 tétel szerint csoportosítva</p>
@@ -345,7 +404,7 @@
   <li><strong>L</strong> mint nyelv ≠ L mint SPACE(log n) osztály — kontextusból derül ki.</li>
 </ul>
 
-<h2>Tétel 1 — Algoritmusok bonyolultsága</h2>
+<h2 id="tetel-1">Tétel 1 — Algoritmusok bonyolultsága</h2>
 
 <div class="question">
 <h3>1. Hogy mérjük az algoritmusok bonyolultságát? Mi az idő- és mi a tárbonyolultság?</h3>
@@ -419,7 +478,7 @@
 </ul>
 </div>
 
-<h2>Tétel 2 — Egyszalagos determinisztikus Turing-gép</h2>
+<h2 id="tetel-2">Tétel 2 — Egyszalagos determinisztikus Turing-gép</h2>
 
 <div class="question">
 <h3>8. Milyen univerzális algoritmus modelleket ismerünk és azok milyen viszonyban állnak egymással?</h3>
@@ -493,7 +552,7 @@
 <p><strong>Eldönthető ⊊ Felismerhető</strong> (= rekurzívan felsorolható).</p>
 </div>
 
-<h2>Tétel 3 — Többszalagos Turing-gép</h2>
+<h2 id="tetel-3">Tétel 3 — Többszalagos Turing-gép</h2>
 
 <div class="question">
 <h3>15. Miben változik a többszalagos Turing-gép definíciója az egyszalagoséhoz képest?</h3>
@@ -528,7 +587,7 @@
 <p><strong>Időigény:</strong> t lépéses k-szalagos szimulációja <strong>O(t²)</strong> lépés egyszalagoson.</p>
 </div>
 
-<h2>Tétel 4 — Idő- és tárbonyolultsági osztályok</h2>
+<h2 id="tetel-4">Tétel 4 — Idő- és tárbonyolultsági osztályok</h2>
 
 <div class="question">
 <h3>19. Mi a TIME(f(n))? Mi a P és az EXPTIME definíciója?</h3>
@@ -580,7 +639,7 @@
 <p><strong>Miért nem uniózunk?</strong> P-nél a polinomokat uniózzuk (n, n², …), mert ezek <em>különböző</em> osztályok. Logaritmusnál k · log n minden konstans k-ra ugyanaz az osztály (lineáris felgyorsítás tárverziója), log²n viszont már szigorúan nagyobb (külön „polylog" osztály). Tehát log n a természetes legkisebb értelmes tár (egy pointer mérete).</p>
 </div>
 
-<h2>Tétel 5 — Nemdeterminisztikus Turing-gép</h2>
+<h2 id="tetel-5">Tétel 5 — Nemdeterminisztikus Turing-gép</h2>
 
 <div class="question">
 <h3>25. Miben változik a nemdeterminisztikus Turing-gép definíciója a determinisztikuséhoz képest?</h3>
@@ -640,7 +699,7 @@
 <p><strong>Hierarchia:</strong> L ⊆ NL ⊆ P ⊆ NP ⊆ PSPACE ⊆ EXPTIME ⊆ NEXPTIME. NL ⊆ P bizonyított (konfig-gráf elérhetőség polinom).</p>
 </div>
 
-<h2>Tétel 6 — NP és Tanú-tétel</h2>
+<h2 id="tetel-6">Tétel 6 — NP és Tanú-tétel</h2>
 
 <div class="question">
 <h3>31. Mi a Tanú-tétel?</h3>
@@ -682,7 +741,7 @@ L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 <p>⟹ Faktorizáció ∈ NP (sőt NP ∩ coNP, valószínűleg nem NP-teljes).</p>
 </div>
 
-<h2>Tétel 7 — Eldönthetetlen nyelvek, osztályok összefüggései</h2>
+<h2 id="tetel-7">Tétel 7 — Eldönthetetlen nyelvek, osztályok összefüggései</h2>
 
 <div class="question">
 <h3>35. Milyen eldönthetetlen nyelveket ismersz?</h3>
@@ -756,7 +815,7 @@ L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 <p>(Megjegyzés: idő esetén ez NEM teljesül — ezért külön P és NP.)</p>
 </div>
 
-<h2>Tétel 8 — Visszavezetés, NP-teljesség</h2>
+<h2 id="tetel-8">Tétel 8 — Visszavezetés, NP-teljesség</h2>
 
 <div class="question">
 <h3>42. Mi a nyelvek közti visszavezetés definíciója?</h3>
@@ -799,7 +858,7 @@ L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 <p>(Karp 1972: 21 alapprobléma.)</p>
 </div>
 
-<h2>Tétel 9 — SAT, NP-teljesség, teljes nyelvek</h2>
+<h2 id="tetel-9">Tétel 9 — SAT, NP-teljesség, teljes nyelvek</h2>
 
 <div class="question">
 <h3>47. Mi a SAT nyelv? Hogy bizonyították, hogy NP-nehéz?</h3>

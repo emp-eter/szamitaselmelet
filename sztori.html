@@ -91,9 +91,68 @@
     border-radius: 4px;
     font-size: 1.05em;
   }
+  .topnav {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    border-bottom: 2px solid #2c3e50;
+    padding: 0.6em 0;
+    margin-bottom: 1.2em;
+    z-index: 100;
+  }
+  .nav-versions {
+    display: flex;
+    gap: 0.4em;
+    margin-bottom: 0.4em;
+    flex-wrap: wrap;
+  }
+  .nav-versions a {
+    padding: 0.4em 0.9em;
+    background: #ecf0f1;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 0.9em;
+    font-family: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  }
+  .nav-versions a.active { background: #2c3e50; color: white; }
+  .nav-versions a:hover { background: #34495e; color: white; }
+  .nav-tetelek { display: flex; gap: 0.25em; flex-wrap: wrap; }
+  .nav-tetelek a {
+    padding: 0.3em 0.7em;
+    background: #f7f9fb;
+    border: 1px solid #d4d4d4;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #34495e;
+    font-size: 0.85em;
+    font-family: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  }
+  .nav-tetelek a:hover { background: #2c3e50; color: white; border-color: #2c3e50; }
+  @media print { .topnav { display: none !important; } }
 </style>
 </head>
 <body>
+
+<nav class="topnav">
+  <div class="nav-versions">
+    <a href="sztori.html" class="active">📖 Sztori</a>
+    <a href="egyszeru.html">📝 Egyszerű</a>
+    <a href="index.html">📚 Részletes</a>
+  </div>
+  <div class="nav-tetelek">
+    <a href="#tetel-1" title="Honnan jött">T1</a>
+    <a href="#tetel-2" title="Turing-gép">T2</a>
+    <a href="#tetel-3" title="Variációk">T3</a>
+    <a href="#tetel-4" title="Mibe kerül?">T4</a>
+    <a href="#tetel-5" title="Osztály-rendezés">T5</a>
+    <a href="#tetel-6" title="Tanú-tétel">T6</a>
+    <a href="#tetel-7" title="Megoldhatatlan">T7</a>
+    <a href="#tetel-8" title="Visszavezetés">T8</a>
+    <a href="#tetel-9" title="Teljes nyelvek">T9</a>
+  </div>
+</nav>
 
 <h1>Számításelmélet — a sztori</h1>
 <p>egy narratíva, ami nem magolni való</p>
@@ -103,7 +162,7 @@ A teljes tárgy egyetlen kérdésre próbál válaszolni:<br>
 <strong>„Mit lehet egyáltalán kiszámolni egy géppel, és mibe kerül?"</strong>
 </div>
 
-<h2>1. Honnan jött az egész?</h2>
+<h2 id="tetel-1">1. Honnan jött az egész?</h2>
 
 <p>Az 1930-as években <strong>még nem volt számítógép</strong>. A matematikusok mégis azt kérdezték: „mit jelent az, hogy egy probléma <em>algoritmussal megoldható</em>?" — szükségük volt egy <span class="key">formális modellre</span>, ami megragadja az „algoritmus" fogalmát.</p>
 
@@ -121,7 +180,7 @@ A teljes tárgy egyetlen kérdésre próbál válaszolni:<br>
 
 <div class="aside">Ez a tárgy 8. kérdése. Most már tudod a választ saját szavakkal: „három különböző matek-modell, mind ekvivalens, ezt a Church-Turing tézis mondja ki."</div>
 
-<h2>2. Mi az a Turing-gép?</h2>
+<h2 id="tetel-2">2. Mi az a Turing-gép?</h2>
 
 <p>Képzeld el ezt:</p>
 
@@ -149,7 +208,7 @@ A teljes tárgy egyetlen kérdésre próbál válaszolni:<br>
 
 <div class="aside">Ez fedi a 9–14. kérdést. Ha valaki azt kérdezi „mi a konfiguráció?", te azt mondod: „a gép pillanatnyi állapota — milyen az állapot, mi van a szalagon, hol áll a fej."</div>
 
-<h2>3. Variációk a Turing-gépre</h2>
+<h2 id="tetel-3">3. Variációk a Turing-gépre</h2>
 
 <p>Ugyanaz a gép, csak ráncoltabb. Mindegyik <strong>ugyanazt tudja kiszámítani</strong>, csak hatékonysági különbségek vannak.</p>
 
@@ -166,7 +225,7 @@ A teljes tárgy egyetlen kérdésre próbál válaszolni:<br>
 
 <div class="aside">Ez fedi a 15–18. és 25–27. kérdést. „Mi a nemdet. eltérése a det.-től? Egy lépésben több lehet, és elég ha az egyik elfogad."</div>
 
-<h2>4. Mibe kerül a számolás?</h2>
+<h2 id="tetel-4">4. Mibe kerül a számolás?</h2>
 
 <p>Most jön a fő rész. Két erőforrást nézünk:</p>
 
@@ -203,7 +262,7 @@ A teljes tárgy egyetlen kérdésre próbál válaszolni:<br>
 
 <div class="aside">Tehát ha hallasz egy „P-t" — polinom időben megoldható. „NP" — polinom időben ellenőrizhető tipp. Ennyi. Ez a 19–24. és 28–30. kérdés.</div>
 
-<h2>5. Hogyan rendeződnek az osztályok?</h2>
+<h2 id="tetel-5">5. Hogyan rendeződnek az osztályok?</h2>
 
 <p>Ez a legfontosabb kép, amit fejből kell tudni:</p>
 
@@ -236,7 +295,7 @@ L ⊆ NL ⊆ P ⊆ NP ⊆ PSPACE ⊆ EXPTIME ⊆ NEXPTIME ⊆ EXPSPACE
 
 <div class="aside">Ez fedi a 36–41. kérdést. Amikor azt kérdezik „hasonlítsd össze ezeket az osztályokat", te a hierarchiát rajzolod fel és elmondod, melyik bizonyított, melyik nyitott.</div>
 
-<h2>6. A Tanú-tétel — mi is az NP igazából?</h2>
+<h2 id="tetel-6">6. A Tanú-tétel — mi is az NP igazából?</h2>
 
 <p>Az NP definíciója fent egy NTM-en keresztül szólt. Van egy <em>sokkal érthetőbb</em> alternatív definíció. Ez a <span class="key">Tanú-tétel</span>:</p>
 
@@ -258,7 +317,7 @@ L ⊆ NL ⊆ P ⊆ NP ⊆ PSPACE ⊆ EXPTIME ⊆ NEXPTIME ⊆ EXPSPACE
 
 <div class="aside">31–34. kérdés. Mindig ugyanaz a recept: „mi a tanú?", „mennyire nagy?", „hogy ellenőrizzük gyorsan?".</div>
 
-<h2>7. Vannak megoldhatatlan problémák?</h2>
+<h2 id="tetel-7">7. Vannak megoldhatatlan problémák?</h2>
 
 <p>Igen! Vannak dolgok, amik <strong>elvileg sem oldhatók meg algoritmussal</strong>, akármennyi időnk van. Ezek az <span class="key">eldönthetetlen</span> problémák.</p>
 
@@ -275,7 +334,7 @@ L ⊆ NL ⊆ P ⊆ NP ⊆ PSPACE ⊆ EXPTIME ⊆ NEXPTIME ⊆ EXPSPACE
 
 <div class="aside">35. kérdés.</div>
 
-<h2>8. Visszavezetés és NP-teljesség</h2>
+<h2 id="tetel-8">8. Visszavezetés és NP-teljesség</h2>
 
 <p>Most jön egy <em>nagyon erős</em> ötlet. Ha tudunk egy nehéz problémát „<strong>átfogalmazni</strong>" egy másik problémára gyorsan, akkor a két probléma <strong>egyformán nehéz</strong>.</p>
 
@@ -303,7 +362,7 @@ L ⊆ NL ⊆ P ⊆ NP ⊆ PSPACE ⊆ EXPTIME ⊆ NEXPTIME ⊆ EXPSPACE
 
 <div class="aside">42–47. kérdés.</div>
 
-<h2>9. Teljes problémák más osztályokra</h2>
+<h2 id="tetel-9">9. Teljes problémák más osztályokra</h2>
 
 <p>Minden osztálynak vannak „<em>tipikus, legnehezebb</em>" problémái.</p>
 
