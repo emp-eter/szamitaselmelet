@@ -348,7 +348,7 @@
 <h2>Tétel 1 — Algoritmusok bonyolultsága</h2>
 
 <div class="question">
-<h3>1. Hogy mérjük az algoritmusok bonyolultságát? Mi az idő- és tárbonyolultság?</h3>
+<h3>1. Hogy mérjük az algoritmusok bonyolultságát? Mi az idő- és mi a tárbonyolultság?</h3>
 <p>Az algoritmus erőforrásigényét az <strong>input méretének</strong> (n) függvényében vizsgáljuk.</p>
 <ul>
   <li><strong>Időbonyolultság:</strong> az algoritmus által végrehajtott elemi lépések száma n függvényében.</li>
@@ -368,13 +368,13 @@
 </div>
 
 <div class="question">
-<h3>3. Ordó jelölés</h3>
+<h3>3. Mi az ordó jelölés jelentése és definíciója?</h3>
 <div class="formal"><strong>Definíció:</strong> f(n) = O(g(n)), ha létezik c &gt; 0 konstans és n₀ ∈ ℕ úgy, hogy minden n ≥ n₀-ra |f(n)| ≤ c · g(n).</div>
 <div class="intuition">g(n) aszimptotikusan <em>felső becslés</em> f növekedésére, konstans szorzótól eltekintve. Algoritmusok nagyságrendi leírására.</div>
 </div>
 
 <div class="question">
-<h3>4. Lineáris vs. bináris keresés</h3>
+<h3>4. Hasonlítsd össze a lineáris és a bináris keresés bonyolultságát!</h3>
 <table>
 <tr><th></th><th>Lineáris keresés</th><th>Bináris keresés</th></tr>
 <tr><td>Bonyolultság</td><td>O(n)</td><td>O(log n)</td></tr>
@@ -384,7 +384,7 @@
 </div>
 
 <div class="question">
-<h3>5. Buborék vs. összefésüléses rendezés</h3>
+<h3>5. Hasonlítsd össze a buborék és az összefésüléses rendezés bonyolultságát!</h3>
 <table>
 <tr><th></th><th>Buborék (bubble)</th><th>Összefésülés (merge)</th></tr>
 <tr><td>Idő</td><td>O(n²)</td><td>O(n log n)</td></tr>
@@ -395,7 +395,7 @@
 </div>
 
 <div class="question">
-<h3>6. Beszúrásos rendezés bonyolultsága lineáris vs. bináris kereséssel</h3>
+<h3>6. Hasonlítsd össze a beszúrásos rendezés bonyolultságát lineáris és bináris keresés alkalmazása esetén!</h3>
 <p>A beszúrásos rendezés minden új elemnél megkeresi a helyét a már rendezett részben, majd beszúrja (eltolással).</p>
 <ul>
   <li><strong>Lineáris keresés</strong>: O(n²) összehasonlítás, O(n²) eltolás → <strong>összes idő: O(n²)</strong>.</li>
@@ -405,7 +405,7 @@
 </div>
 
 <div class="question">
-<h3>7. Gráfokban az elérhetőség problémái</h3>
+<h3>7. Gráfokban az elérhetőség problémájának milyen fajtái vannak és azokra milyen bonyolultságú algoritmusok ismertek?</h3>
 <ul>
   <li><strong>s–t elérhetőség</strong> (van-e út s-ből t-be?): BFS / DFS, <strong>O(V+E)</strong>.</li>
   <li><strong>Tranzitív lezárt</strong> (minden csúcsból minden csúcsba?): Floyd–Warshall, <strong>O(V³)</strong>.</li>
@@ -422,7 +422,7 @@
 <h2>Tétel 2 — Egyszalagos determinisztikus Turing-gép</h2>
 
 <div class="question">
-<h3>8. Univerzális algoritmus modellek</h3>
+<h3>8. Milyen univerzális algoritmus modelleket ismerünk és azok milyen viszonyban állnak egymással?</h3>
 <ul>
   <li>Turing-gép (TM)</li>
   <li>λ-kalkulus (Church)</li>
@@ -434,7 +434,7 @@
 </div>
 
 <div class="question">
-<h3>9. Egyszalagos determinisztikus Turing-gép definíciója</h3>
+<h3>9. Definiáld az egyszalagos determinisztikus Turing-gépet!</h3>
 <div class="formal">M = (Q, Σ, Γ, δ, q₀, q<sub>accept</sub>, q<sub>reject</sub>)</div>
 <ul>
   <li><strong>Q</strong>: véges állapothalmaz</li>
@@ -448,7 +448,7 @@
 </div>
 
 <div class="question">
-<h3>10. Konfiguráció definíciója</h3>
+<h3>10. Egyszalagos Turing-gép esetén mi a konfiguráció definíciója?</h3>
 <p>A konfiguráció a gép pillanatnyi állapotának <strong>teljes leírása</strong>. Megadható mint <code>uqv</code> alakú szó, ahol:</p>
 <ul>
   <li><strong>u</strong>: a fejtől balra eső szalagtartalom</li>
@@ -459,7 +459,7 @@
 </div>
 
 <div class="question">
-<h3>11. Kezdő- és megállási konfiguráció</h3>
+<h3>11. Egyszalagos Turing-gép esetén hogy néz ki a kezdőkonfiguráció és hogy a megállási konfiguráció?</h3>
 <ul>
   <li><strong>Kezdőkonfiguráció:</strong> q₀w — az állapot q₀, fej a w input első karakterén, szalag = w, utána blank-ek.</li>
   <li><strong>Megállási konfiguráció:</strong> amiben az állapot q<sub>accept</sub> vagy q<sub>reject</sub> — ezekből nincs átmenet.</li>
@@ -467,7 +467,7 @@
 </div>
 
 <div class="question">
-<h3>12. Mikor fogad el / utasít el? Mi az output?</h3>
+<h3>12. Mikor fogadja el egy Turing-gép az inputját, illetve mikor utasítja el azt? Mi az outputja?</h3>
 <ul>
   <li><strong>Elfogadja</strong> w-t: ha a futás során q<sub>accept</sub> állapotba jut.</li>
   <li><strong>Elutasítja</strong> w-t: ha q<sub>reject</sub> állapotba jut.</li>
@@ -477,7 +477,7 @@
 </div>
 
 <div class="question">
-<h3>13. Időigény és időkorlát</h3>
+<h3>13. Mit nevezünk egy Turing-gép időigényének és időkorlátjának?</h3>
 <ul>
   <li><strong>Időigény</strong> t<sub>M</sub>(w): hány lépést tesz M a w inputon (megállásig).</li>
   <li><strong>Időkorlát</strong> f(n): M f(n) időkorlátú, ha minden |w| = n inputra t<sub>M</sub>(w) ≤ f(n).</li>
@@ -485,7 +485,7 @@
 </div>
 
 <div class="question">
-<h3>14. Mikor dönt el / ismer fel egy nyelvet?</h3>
+<h3>14. Mikor dönt el egy Turing-gép egy nyelvet? Mikor ismeri fel azt?</h3>
 <ul>
   <li><strong>Eldönti</strong> L-t: M minden inputon megáll, és pontosan akkor fogadja el w-t, ha w ∈ L.</li>
   <li><strong>Felismeri</strong> L-t: M pontosan az L elemeit fogadja el; ha w ∉ L, lehet hogy elutasít, lehet hogy <em>nem áll meg</em>.</li>
@@ -496,7 +496,7 @@
 <h2>Tétel 3 — Többszalagos Turing-gép</h2>
 
 <div class="question">
-<h3>15. Többszalagos TG eltérése az egyszalagostól</h3>
+<h3>15. Miben változik a többszalagos Turing-gép definíciója az egyszalagoséhoz képest?</h3>
 <ul>
   <li><strong>k szalag</strong>, mindegyiken egy-egy <strong>fej</strong>.</li>
   <li>Átmeneti függvény: <code>δ: Q × Γᵏ → Q × Γᵏ × {L, R, S}ᵏ</code> — mind a k szalagon olvas és ír egyszerre.</li>
@@ -506,14 +506,14 @@
 </div>
 
 <div class="question">
-<h3>16. Többszalagos TG konfigurációja</h3>
+<h3>16. Miben változik a többszalagos Turing-gép konfigurációja az egyszalagoséhoz képest?</h3>
 <p>Tartalmaznia kell <strong>minden szalag tartalmát és fejpozícióját</strong> külön:</p>
 <div class="formal">(q, w₁, i₁, w₂, i₂, …, w<sub>k</sub>, i<sub>k</sub>)</div>
 <p>ahol w<sub>j</sub> a j-edik szalag tartalma, i<sub>j</sub> a j-edik fej pozíciója.</p>
 </div>
 
 <div class="question">
-<h3>17. Kezdőkonfiguráció és output helye</h3>
+<h3>17. Többszalagos Turing-gép esetén hogy néz ki a kezdőkonfiguráció? Hol találjuk végül az outputot?</h3>
 <ul>
   <li><strong>Kezdőkonfiguráció:</strong> 1. szalagon az input w, fej w elején; többi szalag üres, fejek a 0. pozíción; állapot q₀.</li>
   <li><strong>Output:</strong> megállás után az <strong>utolsó (output) szalag</strong> tartalma.</li>
@@ -521,7 +521,7 @@
 </div>
 
 <div class="question">
-<h3>18. Többszalagos szimulációja egyszalagossal</h3>
+<h3>18. Hogyan szimulálunk egy többszalagos Turing-gépet egyszalagos Turing-géppel?</h3>
 <p><strong>Ötlet:</strong> a k szalag tartalmát egyetlen szalagon ábrázoljuk.</p>
 <p><strong>Sávozás:</strong> a szalag ábécét bővítjük, k „sávot" képzelünk a szalagra. Minden sáv tárolja egy eredeti szalag tartalmát + egy <em>fej-jelölőt</em> (extra szimbólum, ami mutatja, hol van a fej).</p>
 <p><strong>Egy szimulációs lépés:</strong> a fej végigmegy a fej-jelölőkön (mindkét irány), elolvassa a k szimbólumot, eltárolja az állapotban, visszamegy és végrehajtja a k „virtuális" szalagon az írást és mozgást.</p>
@@ -531,7 +531,7 @@
 <h2>Tétel 4 — Idő- és tárbonyolultsági osztályok</h2>
 
 <div class="question">
-<h3>19. TIME(f(n)), P, EXPTIME</h3>
+<h3>19. Mi a TIME(f(n))? Mi a P és az EXPTIME definíciója?</h3>
 <ul>
   <li><strong>TIME(f(n))</strong> = { L : van olyan determinisztikus TM, ami L-t f(n) időkorláton belül eldönti }</li>
   <li><strong>P</strong> = ⋃<sub>k ≥ 1</sub> TIME(n<sup>k</sup>) — polinomiális idejű nyelvek</li>
@@ -540,14 +540,14 @@
 </div>
 
 <div class="question">
-<h3>20. Lineáris felgyorsítás tétele</h3>
+<h3>20. Mi a lineáris felgyorsítás tétele?</h3>
 <div class="formal"><strong>Tétel:</strong> Ha L ∈ TIME(f(n)), akkor minden c &gt; 0 konstansra L ∈ TIME(c · f(n) + n + 2).</div>
 <div class="intuition">konstans szorzókkal tetszőlegesen gyorsítható. Ezért bonyolultsági osztályoknál konstans szorzók nem számítanak.</div>
 <p><strong>Bizonyítás vázlat:</strong> a szalag ábécét bővítjük, k szimbólumot egy cellába kódolunk → egy lépésben k eredeti lépés végezhető el.</p>
 </div>
 
 <div class="question">
-<h3>21. Lyukszalagos Turing-gép</h3>
+<h3>21. Miben változik a lyukszalagos Turing-gép definíciója a hagyományoséhoz képest?</h3>
 <p>Az egyszalagoshoz képest <strong>három fajta szalag</strong>:</p>
 <ul>
   <li><strong>Input szalag:</strong> csak olvasható (read-only).</li>
@@ -558,7 +558,7 @@
 </div>
 
 <div class="question">
-<h3>22. Tárigény és tárkorlát</h3>
+<h3>22. Mit nevezünk egy lyukszalagos Turing-gép tárigényének és tárkorlátjának?</h3>
 <ul>
   <li><strong>Tárigény</strong> s<sub>M</sub>(w): hány <em>különböző cellát látogat meg</em> a fej a <strong>munkaszalagokon</strong> a w inputon (input/output szalag NEM számít).</li>
   <li><strong>Tárkorlát</strong> f(n): minden |w| = n-re s<sub>M</sub>(w) ≤ f(n).</li>
@@ -566,7 +566,7 @@
 </div>
 
 <div class="question">
-<h3>23. SPACE(f(n)), PSPACE, EXPSPACE</h3>
+<h3>23. Mi a SPACE(f(n))? Mi a PSPACE és az EXPSPACE definíciója?</h3>
 <ul>
   <li><strong>SPACE(f(n))</strong> = { L : van olyan determinisztikus lyukszalagos TM, ami L-t f(n) tárkorláton belül eldönti }</li>
   <li><strong>PSPACE</strong> = ⋃ SPACE(n<sup>k</sup>) — polinomiális tárú nyelvek</li>
@@ -575,7 +575,7 @@
 </div>
 
 <div class="question">
-<h3>24. L bonyolultsági osztály</h3>
+<h3>24. Mi az L bonyolultsági osztály definíciója? Miért nem uniózunk össze benne osztályokat?</h3>
 <div class="formal"><strong>Definíció:</strong> L = SPACE(log n) — logaritmikus tárú nyelvek.</div>
 <p><strong>Miért nem uniózunk?</strong> P-nél a polinomokat uniózzuk (n, n², …), mert ezek <em>különböző</em> osztályok. Logaritmusnál k · log n minden konstans k-ra ugyanaz az osztály (lineáris felgyorsítás tárverziója), log²n viszont már szigorúan nagyobb (külön „polylog" osztály). Tehát log n a természetes legkisebb értelmes tár (egy pointer mérete).</p>
 </div>
@@ -583,14 +583,14 @@
 <h2>Tétel 5 — Nemdeterminisztikus Turing-gép</h2>
 
 <div class="question">
-<h3>25. Nemdeterminisztikus TG eltérése</h3>
+<h3>25. Miben változik a nemdeterminisztikus Turing-gép definíciója a determinisztikuséhoz képest?</h3>
 <p>Az átmeneti függvény <strong>reláció</strong> (nem függvény):</p>
 <div class="formal">δ: Q × Γ → P(Q × Γ × {L, R})</div>
 <p>vagyis egy konfigurációból <strong>több</strong> lehetséges lépés is van. A gép <em>több párhuzamos futási ágat</em> követhet. Egy lépésben „találgat" a lehetőségek közül.</p>
 </div>
 
 <div class="question">
-<h3>26. NTM elfogadás / elutasítás / output</h3>
+<h3>26. Mikor fogadja el egy nemdeterminisztikus Turing-gép az inputját, illetve mikor utasítja el azt? Mi az outputja?</h3>
 <ul>
   <li><strong>Elfogadja</strong> w-t: ha <strong>létezik</strong> olyan futási ág, ami q<sub>accept</sub>-be jut.</li>
   <li><strong>Elutasítja</strong> w-t: ha <strong>minden</strong> futási ág q<sub>reject</sub>-ben végződik (vagy nem áll meg, de nem fogad el).</li>
@@ -599,7 +599,7 @@
 </div>
 
 <div class="question">
-<h3>27. NTM szimulációja determinisztikus TM-mel</h3>
+<h3>27. Hogyan szimulálunk egy nemdeterminisztikus Turing-gépet determinisztikus Turing-géppel?</h3>
 <p><strong>Ötlet:</strong> a futási fát <strong>BFS-sel</strong> járjuk be (DFS rossz, mert egy végtelen ágon elveszhet).</p>
 <p><strong>Implementáció:</strong> a determinisztikus gép kipróbál minden lehetséges választás-sorozatot (kódolva pl. számjegysorozattal), egyiket a másik után. Ha egy ág q<sub>accept</sub>-be jut, megáll és elfogad.</p>
 <ul>
@@ -609,7 +609,7 @@
 </div>
 
 <div class="question">
-<h3>28. NTIME(f(n)), NSPACE(f(n))</h3>
+<h3>28. Mi az NTIME(f(n)) és az NSPACE(f(n))? Hasonlítsd össze őket a determinisztikus megfelelőikkel!</h3>
 <ul>
   <li><strong>NTIME(f(n))</strong> = { L : NTM-mel f(n) időkorláton belül eldönthető }</li>
   <li><strong>NSPACE(f(n))</strong> = { L : NTM-mel f(n) tárkorláton belül eldönthető }</li>
@@ -623,7 +623,7 @@
 </div>
 
 <div class="question">
-<h3>29. NP, NEXPTIME</h3>
+<h3>29. Mi az NP és az NEXPTIME? Hasonlítsd össze őket a determinisztikus megfelelőikkel!</h3>
 <ul>
   <li><strong>NP</strong> = ⋃ NTIME(n<sup>k</sup>) — nemdeterminisztikus polinom</li>
   <li><strong>NEXPTIME</strong> = ⋃ NTIME(2<sup>n^k</sup>)</li>
@@ -632,7 +632,7 @@
 </div>
 
 <div class="question">
-<h3>30. NL, NP, NEXPTIME</h3>
+<h3>30. Mi az NL, az NP és az NEXPTIME? Hasonlítsd össze őket a determinisztikus megfelelőikkel!</h3>
 <ul>
   <li><strong>NL</strong> = NSPACE(log n) — nemdeterminisztikus logaritmikus tár</li>
   <li>NP, NEXPTIME mint fent</li>
@@ -643,14 +643,14 @@
 <h2>Tétel 6 — NP és Tanú-tétel</h2>
 
 <div class="question">
-<h3>31. Tanú-tétel</h3>
+<h3>31. Mi a Tanú-tétel?</h3>
 <div class="formal"><strong>Tétel:</strong> L ∈ NP ⟺ ∃ p polinom és L' ∈ P (tanúellenőrző nyelv), hogy:<br>
 L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 <div class="intuition">L pontosan azokat az x-eket tartalmazza, amelyekhez <em>létezik</em> polinom méretű <strong>tanú</strong> (y), amit polinom időben <strong>ellenőrizni</strong> lehet, hogy igazolja x ∈ L. Az NP a polinomban tanúsítható problémák osztálya.</div>
 </div>
 
 <div class="question">
-<h3>32. Tanú-tétel: Hamilton-kör</h3>
+<h3>32. Hogyan alkalmazzuk a Tanú-tételt a Hamilton-kör problémára?</h3>
 <p><strong>Probléma:</strong> L = { G : G-ben van Hamilton-kör } (olyan kör, ami minden csúcsot pontosan egyszer érint).</p>
 <ul>
   <li><strong>Tanú:</strong> maga a Hamilton-kör — egy csúcspermutáció (v₁, …, v<sub>n</sub>).</li>
@@ -661,7 +661,7 @@ L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 </div>
 
 <div class="question">
-<h3>33. Tanú-tétel: gráfszínezés</h3>
+<h3>33. Hogyan alkalmazzuk a Tanú-tételt a gráfszínezési problémára?</h3>
 <p><strong>Probléma:</strong> L = { (G, k) : G csúcsai k színnel színezhetők, szomszédosak különböző színűek }.</p>
 <ul>
   <li><strong>Tanú:</strong> egy színezés, c: V → {1, …, k}.</li>
@@ -672,7 +672,7 @@ L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 </div>
 
 <div class="question">
-<h3>34. Tanú-tétel: egész faktorizáció</h3>
+<h3>34. Hogyan alkalmazzuk a Tanú-tételt az egész faktorizáció problémájára?</h3>
 <p><strong>Probléma (eldöntési):</strong> L = { (n, k) : n-nek van valódi osztója [2, k]-ban }.</p>
 <ul>
   <li><strong>Tanú:</strong> egy d osztó, 2 ≤ d ≤ k.</li>
@@ -685,7 +685,7 @@ L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 <h2>Tétel 7 — Eldönthetetlen nyelvek, osztályok összefüggései</h2>
 
 <div class="question">
-<h3>35. Eldönthetetlen nyelvek</h3>
+<h3>35. Milyen eldönthetetlen nyelveket ismersz?</h3>
 <ul>
   <li><strong>Megállási probléma (Halting):</strong> { (M, w) : M megáll w-n }. Turing 1936., átlós módszer.</li>
   <li><strong>Üresség:</strong> { M : L(M) = ∅ }.</li>
@@ -697,7 +697,7 @@ L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 </div>
 
 <div class="question">
-<h3>36. TIME, SPACE, NTIME, NSPACE összevetése</h3>
+<h3>36. Hasonlítsd össze a TIME, SPACE, NTIME és NSPACE osztályokat! Melyik tartalmazza melyiket és miért?</h3>
 <table class="normal-table">
 <tr><th>Inkluzió</th><th>Indoklás</th></tr>
 <tr><td>TIME(f) ⊆ SPACE(f)</td><td>egy lépésben egy cellát ír</td></tr>
@@ -710,7 +710,7 @@ L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 </div>
 
 <div class="question">
-<h3>37. P, L, NL összevetése</h3>
+<h3>37. Hasonlítsd össze a P, L és NL osztályokat! Melyik tartalmazza melyiket és miért?</h3>
 <ul>
   <li>L = SPACE(log n), NL = NSPACE(log n)</li>
   <li><strong>L ⊆ NL</strong> (det. ⊆ nemdet.)</li>
@@ -720,7 +720,7 @@ L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 </div>
 
 <div class="question">
-<h3>38. P, PSPACE, NP összevetése</h3>
+<h3>38. Hasonlítsd össze a P, PSPACE és NP osztályokat! Melyik tartalmazza melyiket és miért?</h3>
 <ul>
   <li><strong>P ⊆ NP</strong>: det. ⊆ nemdet.</li>
   <li><strong>P ⊆ PSPACE</strong>: t időkorlát ⟹ legfeljebb t cellát látogat.</li>
@@ -730,7 +730,7 @@ L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 </div>
 
 <div class="question">
-<h3>39. PSPACE, EXPTIME, NP összevetése</h3>
+<h3>39. Hasonlítsd össze a PSPACE, EXPTIME és NP osztályokat! Melyik tartalmazza melyiket és miért?</h3>
 <ul>
   <li><strong>NP ⊆ PSPACE</strong> (lásd fent).</li>
   <li><strong>PSPACE ⊆ EXPTIME</strong>: n<sup>k</sup> tár → 2<sup>O(n^k)</sup> konfiguráció; ennyi lépésen belül megáll vagy ciklusba kerül.</li>
@@ -739,7 +739,7 @@ L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 </div>
 
 <div class="question">
-<h3>40. EXPTIME, EXPSPACE, NEXPTIME összevetése</h3>
+<h3>40. Hasonlítsd össze a EXPTIME, EXPSPACE és NEXPTIME osztályokat! Melyik tartalmazza melyiket és miért?</h3>
 <ul>
   <li>EXPTIME ⊆ NEXPTIME (det. ⊆ nemdet.)</li>
   <li>EXPTIME ⊆ EXPSPACE (idő ⊆ tár)</li>
@@ -749,7 +749,7 @@ L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 </div>
 
 <div class="question">
-<h3>41. Ha létezik PSPACE, miért nincs NPSPACE?</h3>
+<h3>41. Ha létezik PSPACE osztály, akkor miért nem létezik NPSPACE?</h3>
 <p><strong>Savitch tétele:</strong> NSPACE(f) ⊆ SPACE(f²), ha f(n) ≥ log n.</p>
 <p>⟹ NPSPACE = ⋃ NSPACE(n<sup>k</sup>) ⊆ ⋃ SPACE(n<sup>2k</sup>) = PSPACE. Másrészt PSPACE ⊆ NPSPACE triviális.</p>
 <p>⟹ <strong>NPSPACE = PSPACE</strong> — felesleges külön nevet adni.</p>
@@ -759,25 +759,25 @@ L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 <h2>Tétel 8 — Visszavezetés, NP-teljesség</h2>
 
 <div class="question">
-<h3>42. Nyelvek közti visszavezetés (Karp)</h3>
+<h3>42. Mi a nyelvek közti visszavezetés definíciója?</h3>
 <div class="formal"><strong>Definíció:</strong> L₁ ≤<sub>p</sub> L₂, ha létezik f: Σ* → Σ* polinom időben számítható függvény, hogy minden w-re: w ∈ L₁ ⟺ f(w) ∈ L₂.</div>
 <div class="intuition">L₁ eldöntését visszavezetjük L₂-re az f transzformáción keresztül. Ha L₂ „könnyű", L₁ is.</div>
 </div>
 
 <div class="question">
-<h3>43. Nehéz egy osztályra</h3>
+<h3>43. Mikor mondjuk, hogy egy nyelv nehéz egy bonyolultsági osztályra nézve?</h3>
 <p><strong>Definíció:</strong> L <strong>C-nehéz</strong>, ha minden L' ∈ C-re L' ≤<sub>p</sub> L.</p>
 <p>Vagyis L <em>legalább olyan nehéz</em>, mint C bármelyik nyelve. Nem feltétlenül van benne C-ben (lehet „kívülről" nehéz).</p>
 </div>
 
 <div class="question">
-<h3>44. Teljes egy osztályra</h3>
+<h3>44. Mikor mondjuk, hogy egy nyelv teljes egy bonyolultsági osztályra nézve?</h3>
 <p><strong>Definíció:</strong> L <strong>C-teljes</strong>, ha: <strong>(1)</strong> L ∈ C ÉS <strong>(2)</strong> L C-nehéz.</p>
 <p>L a „legnehezebb" C-beli nyelv. Ha egy NP-teljes nyelv P-ben van ⟹ P = NP.</p>
 </div>
 
 <div class="question">
-<h3>45. NP-teljes nyelv keresése</h3>
+<h3>45. Ha ismerünk egy NP-teljes nyelvet, hogy keressünk másokat?</h3>
 <p>Tegyük fel, L₁ NP-teljes, és új L₂-ről akarjuk belátni, hogy NP-teljes.</p>
 <ol>
   <li>Megmutatjuk, hogy <strong>L₂ ∈ NP</strong> (tanú-tétellel).</li>
@@ -787,7 +787,7 @@ L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 </div>
 
 <div class="question">
-<h3>46. NP-teljes nyelvek</h3>
+<h3>46. Mutass be NP-teljes nyelveket!</h3>
 <ul>
   <li>SAT, 3-SAT, 3-CNF-SAT</li>
   <li>3-SZÍN (3-coloring)</li>
@@ -802,7 +802,7 @@ L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 <h2>Tétel 9 — SAT, NP-teljesség, teljes nyelvek</h2>
 
 <div class="question">
-<h3>47. SAT nyelv és NP-nehézsége</h3>
+<h3>47. Mi a SAT nyelv? Hogy bizonyították, hogy NP-nehéz?</h3>
 <p><strong>SAT</strong> = { φ : φ kielégíthető Boole-formula (CNF) }.</p>
 <div class="formal"><strong>Cook–Levin tétel (1971):</strong> SAT NP-teljes.</div>
 <p><strong>Bizonyítás vázlat:</strong></p>
@@ -821,7 +821,7 @@ L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 </div>
 
 <div class="question">
-<h3>48. 2-SAT, 3-SAT, QBF összefüggése</h3>
+<h3>48. Mi a következő nyelvek bonyolultsága közötti összefüggés: 2-SAT, 3-SAT, QBF?</h3>
 <table class="normal-table">
 <tr><th>Probléma</th><th>Bonyolultság</th></tr>
 <tr><td>2-SAT</td><td>P-ben (implikációs gráf SCC-vel)</td></tr>
@@ -832,7 +832,7 @@ L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 </div>
 
 <div class="question">
-<h3>49. Gráfproblémák: elérhetőség, színezés, Hamilton-kör</h3>
+<h3>49. Mi a következő gráfproblémák bonyolultsága közötti összefüggés: elérhetőség, színezés, Hamilton-kör keresés?</h3>
 <table class="normal-table">
 <tr><th>Probléma</th><th>Bonyolultság</th></tr>
 <tr><td>s–t elérhetőség (REACH)</td><td>NL-teljes (és így P-ben)</td></tr>
@@ -843,7 +843,7 @@ L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 </div>
 
 <div class="question">
-<h3>50. Reversi, Sakk, Sokoban összefüggése</h3>
+<h3>50. Mi a következő játékok bonyolultsága közötti összefüggés: Reversi, Sakk, Sokoban?</h3>
 <table class="normal-table">
 <tr><th>Játék</th><th>Bonyolultság</th></tr>
 <tr><td>Sokoban</td><td>PSPACE-teljes</td></tr>
@@ -854,7 +854,7 @@ L = { x : ∃y, |y| ≤ p(|x|), (x, y) ∈ L' }</div>
 </div>
 
 <div class="question">
-<h3>51. Sakk, Mahjong solitaire, Go összefüggése</h3>
+<h3>51. Mi a következő játékok bonyolultsága közötti összefüggés: Sakk, Mahjong solitaire, Go?</h3>
 <table class="normal-table">
 <tr><th>Játék</th><th>Bonyolultság</th></tr>
 <tr><td>Mahjong solitaire</td><td>NP-teljes</td></tr>
